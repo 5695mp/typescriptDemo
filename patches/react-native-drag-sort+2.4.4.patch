@@ -1,0 +1,96 @@
+diff --git a/node_modules/react-native-drag-sort/AutoDragSortableView.js b/node_modules/react-native-drag-sort/AutoDragSortableView.js
+index 74d46d5..1662440 100644
+--- a/node_modules/react-native-drag-sort/AutoDragSortableView.js
++++ b/node_modules/react-native-drag-sort/AutoDragSortableView.js
+@@ -20,10 +20,16 @@ export default class AutoDragSortableView extends Component{
+         // this.reComplexDataSource(true,props) // react < 16.3
+         // react > 16.3 Fiber
+         const rowNum = parseInt(props.parentWidth / itemWidth);
++        const spacing =  props.spacing || 0
++
+         const dataSource = props.dataSource.map((item, index) => {
+             const newData = {}
+-            const left = (index % rowNum) * itemWidth
+-            const top = parseInt((index / rowNum)) * itemHeight
++            const row = parseInt(index / rowNum)
++            const column = parseInt(index % rowNum)
++            let left = (column * itemWidth)
++            let top = row * itemHeight
++            left = left > 0 ? left + ( spacing * column ) : left
++            top = top > 0 ? top + (spacing * row) : top
+ 
+             newData.data = item
+             newData.originIndex = index
+@@ -36,10 +42,11 @@ export default class AutoDragSortableView extends Component{
+             newData.scaleValue = new Animated.Value(1)
+             return newData
+         });
++        const rows = Math.ceil(dataSource.length / rowNum)
+         this.state = {
+             dataSource: dataSource,
+             curPropsDataSource: props.dataSource,
+-            height: Math.ceil(dataSource.length / rowNum) * itemHeight,
++            height: rows * itemHeight + spacing * (rows - 1),
+             itemWidth,
+             itemHeight,
+         };
+@@ -76,10 +83,15 @@ export default class AutoDragSortableView extends Component{
+         if (nextprops.dataSource != prevState.curPropsDataSource || itemWidth !== prevState.itemWidth || itemHeight !== prevState.itemHeight) {
+ 
+             const rowNum = parseInt(nextprops.parentWidth / itemWidth);
++            const spacing =  nextprops.spacing || 0
+             const dataSource = nextprops.dataSource.map((item, index) => {
+                 const newData = {};
+-                const left = index % rowNum * itemWidth;
+-                const top = parseInt(index / rowNum) * itemHeight;
++                const row = parseInt(index / rowNum)
++                const column = parseInt(index % rowNum)
++                let left = (column * itemWidth)
++                let top = row * itemHeight
++                left = left > 0 ? left + ( spacing * column ) : left
++                top = top > 0 ? top + (spacing * row) : top
+ 
+                 newData.data = item;
+                 newData.originIndex = index;
+@@ -92,10 +104,11 @@ export default class AutoDragSortableView extends Component{
+                 newData.scaleValue = new Animated.Value(1);
+                 return newData;
+             });
++            const rows = Math.ceil(dataSource.length / rowNum)
+             return {
+                 dataSource: dataSource,
+                 curPropsDataSource: nextprops.dataSource,
+-                height: Math.ceil(dataSource.length / rowNum) * itemHeight,
++                height: rows * itemHeight + spacing * (rows - 1),
+                 itemWidth,
+                 itemHeight,
+             }
+@@ -599,7 +612,7 @@ export default class AutoDragSortableView extends Component{
+                 }}
+                 scrollEnabled = {this.state.scrollEnabled}
+                 onScroll={this.onScrollListener}
+-                style={styles.container}>  
++                style={[styles.container]}>
+                 {this.props.renderHeaderView ? this.props.renderHeaderView : null}
+                 <View
+                     //ref={(ref)=>this.sortParentRef=ref}
+@@ -611,6 +624,7 @@ export default class AutoDragSortableView extends Component{
+                     >
+                     {this._renderItemView()}
+                 </View>
++
+                 {this.props.renderBottomView ? this.props.renderBottomView : null}
+             </ScrollView>
+         )
+diff --git a/node_modules/react-native-drag-sort/index.d.ts b/node_modules/react-native-drag-sort/index.d.ts
+index 8eb4cc2..47f3dbc 100644
+--- a/node_modules/react-native-drag-sort/index.d.ts
++++ b/node_modules/react-native-drag-sort/index.d.ts
+@@ -36,6 +36,7 @@ interface AutoIProps extends IProps {
+   autoThrottle?: number,
+   autoThrottleDuration?: number,
+   renderHeaderView?: any,
++  spacing?: number,
+   headerViewHeight?: number,
+   scrollIndicatorInsets?: {top: number, left: number, bottom: number, right: number},
+   renderBottomView?: any,

@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "886557318656",
+    "project_id": "window-3e250",
+    "storage_bucket": "window-3e250.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886557318656:android:05fb300ac0b531d4ed82e5",
+        "android_client_info": {
+          "package_name": "com.window"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886557318656-dnvlfl60rhi0unpdc0856msqvodtusia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0vfEsMXjsE5LajIyTJHwHv1M0Hsz7_R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886557318656-dnvlfl60rhi0unpdc0856msqvodtusia.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886557318656-evv2v8u97c8e6qm3c2f13s1n1qsu8la4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.window"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:886557318656:android:2266d103a80d3c4ded82e5",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "886557318656-dnvlfl60rhi0unpdc0856msqvodtusia.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0vfEsMXjsE5LajIyTJHwHv1M0Hsz7_R0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "886557318656-dnvlfl60rhi0unpdc0856msqvodtusia.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "886557318656-evv2v8u97c8e6qm3c2f13s1n1qsu8la4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.window"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

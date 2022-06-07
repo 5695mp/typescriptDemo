@@ -1,0 +1,32 @@
+diff --git a/node_modules/react-native-phone-number-input/lib/index.js b/node_modules/react-native-phone-number-input/lib/index.js
+index b89c388..f529927 100644
+--- a/node_modules/react-native-phone-number-input/lib/index.js
++++ b/node_modules/react-native-phone-number-input/lib/index.js
+@@ -22,8 +22,8 @@ export default class PhoneInput extends PureComponent {
+       number: props.value
+         ? props.value
+         : props.defaultValue
+-        ? props.defaultValue
+-        : "",
++          ? props.defaultValue
++          : "",
+       modalVisible: false,
+       countryCode: props.defaultCode ? props.defaultCode : "IN",
+       disabled: props.disabled || false,
+@@ -40,6 +40,16 @@ export default class PhoneInput extends PureComponent {
+     return null;
+   };
+ 
++  async componentDidUpdate(prevProps) {
++    if (prevProps.defaultCode !== this.props.defaultCode) {
++      const { defaultCode } = this.props;
++      if (defaultCode) {
++        const code = await getCallingCode(defaultCode);
++        this.setState({ code, countryCode: defaultCode });
++      }
++    }
++  }
++
+   async componentDidMount() {
+     const { defaultCode } = this.props;
+     if (defaultCode) {

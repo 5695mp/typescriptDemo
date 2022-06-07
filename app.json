@@ -1,0 +1,109 @@
+{
+  "expo": {
+    "name": "Window",
+    "slug": "laber",
+    "owner": "manthanpawar",
+    "scheme": "window",
+    "version": "2.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#161616"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "enabled": false
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "usesAppleSignIn": true,
+      "bundleIdentifier": "com.window",
+      "buildNumber": "2.0.1",
+      "associatedDomains": [
+        "applinks:link.windowapp.com",
+        "applinks:u92c0-alternate.app.link",
+        "link.windowapp.com",
+        "applinks:link.windowapp-test.com",
+        "applinks:u92c0-alternate.test-app.link"
+      ],
+      "infoPlist": {
+        "LSApplicationQueriesSchemes": ["window"],
+        "NSCameraUsageDescription": "Window needs access to your camera to add media to posts, projects, and accounts.",
+        "NSPhotoLibraryUsageDescription": "Window needs access to photos/videos to add media to posts, projects, and accounts.",
+        "NSContactsUsageDescription": "Window needs access to contacts to find your friends in the app",
+        "NSPhotoLibraryAddUsageDescription": "For downloading and saving photos/videos in messenger feature",
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Window uses your location to find nearby projects and suggest your city when adding records.",
+        "NSLocationWhenInUseUsageDescription": "Window uses your location to find nearby projects and suggest your city when adding records.",
+        "NSMicrophoneUsageDescription": "Window needs access to microphone to record video."
+      },
+      "config": {
+        "branch": {
+          "apiKey": "key_live_jh9Tf2CgScUQ6WR847k4ucchrqjo1mnI"
+        },
+        "googleMapsApiKey": "AIzaSyDTQl7k36kic9mxm0ajee9MwV5Y88AK9Yo"
+      }
+    },
+    "android": {
+      "package": "com.window",
+      "versionCode": 1,
+      "icon": "./assets/android-notification-icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "googleServicesFile": "./google-services.json",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDTQl7k36kic9mxm0ajee9MwV5Y88AK9Yo"
+        },
+        "branch": {
+          "apiKey": "key_live_jh9Tf2CgScUQ6WR847k4ucchrqjo1mnI"
+        }
+      },
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "FOREGROUND_SERVICE",
+        "READ_CONTACTS",
+        "NOTIFICATIONS",
+        "VIBRATE",
+        "RECEIVE_BOOT_COMPLETED",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_MEDIA_LOCATION",
+        "RECORD_AUDIO"
+      ],
+      "useNextNotificationsApi": true,
+      "softwareKeyboardLayoutMode": "resize"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Window needs access to photos/videos to add media to posts, projects, and accounts.",
+          "cameraPermission": "Window needs access to your camera to add media to posts, projects, and accounts.",
+          "microphonePermission": "Window needs access to microphone to record video."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#ff871c"
+        }
+      ],
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "Window needs access to photos/videos to add media to posts, projects, and accounts.",
+          "savePhotosPermission": "For downloading and saving photos/videos in messenger feature",
+          "isAccessMediaLocationEnabled": true
+        }
+      ]
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+diff --git a/node_modules/react-native-toast-message/src/index.js b/node_modules/react-native-toast-message/src/index.js
+index 3f14bb5..551f437 100644
+--- a/node_modules/react-native-toast-message/src/index.js
++++ b/node_modules/react-native-toast-message/src/index.js
+@@ -108,7 +108,7 @@ class Toast extends Component {
+       animation: new Animated.Value(0),
+       keyboardHeight: 0,
+       keyboardVisible: false,
+-
++      opacity: 0,
+       customProps: {}
+     };
+ 
+@@ -228,6 +228,7 @@ class Toast extends Component {
+           fails to hide them completely due to always resetting to the default component height
+       */
+       height: prevState.height,
++      opacity: 1,
+       inProgress: true,
+       ...options,
+       ...(options?.props ? { customProps: options.props } : { customProps: {} })
+@@ -254,7 +255,7 @@ class Toast extends Component {
+   async hide({ speed } = {}) {
+     await this._setState((prevState) => ({
+       ...prevState,
+-      inProgress: true
++      inProgress: true,
+     }));
+     await this.animateHide({
+       speed
+@@ -263,7 +264,8 @@ class Toast extends Component {
+     await this._setState((prevState) => ({
+       ...prevState,
+       isVisible: false,
+-      inProgress: false
++      inProgress: false,
++      opacity: 0,
+     }));
+ 
+     const { onHide } = this.state;
+@@ -376,14 +378,14 @@ class Toast extends Component {
+ 
+   render() {
+     const { style } = this.props;
+-    const { position, keyboardHeight } = this.state;
++    const { position, keyboardHeight, opacity } = this.state;
+     const baseStyle = this.getBaseStyle(position, keyboardHeight);
+ 
+     return (
+       <Animated.View
+         testID='animatedView'
+         onLayout={this.onLayout}
+-        style={[baseStyle, style]}
++        style={[baseStyle, style, {opacity}]}
+         {...this.panResponder.panHandlers}>
+         {this.renderContent(this.props)}
+       </Animated.View>
